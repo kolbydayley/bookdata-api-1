@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
-	"github.com/moficodes/bookdata/api/datastore"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/gorilla/mux"
+	"github.com/moficodes/bookdata/api/datastore"
 )
 
 var (
@@ -25,11 +26,12 @@ func init() {
 }
 
 func main() {
+	api_version := "API v1.0.0.1"
 	r := mux.NewRouter()
 	log.Println("bookdata api")
 	api := r.PathPrefix("/api/v1").Subrouter()
 	api.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "api v1")
+		fmt.Fprintln(w, api_version)
 	})
 	api.HandleFunc("/books/authors/{author}", searchByAuthor).Methods(http.MethodGet)
 	api.HandleFunc("/books/book-name/{bookName}", searchByBookName).Methods(http.MethodGet)

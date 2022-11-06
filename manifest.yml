@@ -1,6 +1,6 @@
 ---
 applications:
-- name: <your-app-name>
+- name: book-data-api
   random-route: true
   memory: 256M
   env:
